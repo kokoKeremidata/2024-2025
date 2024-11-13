@@ -93,29 +93,3 @@ public class calculator {
        }
     }
 }
-
-/*
-       clickButton.addActionListener(new ActionListener(){
-
-           public void actionPerformed(ActionEvent e){
-               int counter = Integer.parseInt(showCLicks.getText());
-               counter++;
-               showCLicks.setText(String.valueOf(counter));
-           }
-       });
-
-       clickButton1.addActionListener(new ActionListener(){
-
-           public void actionPerformed(ActionEvent e){
-               int counter = Integer.parseInt(showCLicks.getText());
-               counter--;
-               showCLicks.setText(String.valueOf(counter));
-           }
-       });
-        resetButton.addActionListener(new ActionListener(){
-
-            public void actionPerformed(ActionEvent e){
-                showCLicks.setText("0");
-            }
-        });
-*/
