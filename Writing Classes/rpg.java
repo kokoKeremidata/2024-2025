@@ -1,19 +1,19 @@
 public class rpg {
 
     public static void main(String[] args){
-        Wizard wizard = new Wizard("Merlin",100, 10,5);
-        Warrior warrior = new Warrior("Ragnar",100,7,10);
+        Wizard wizard = new Wizard("Merlin",100, 10,4);
+        Warrior warrior = new Warrior("Ragnar",100,7,7);
         // Task 5: Create an object/instance of your new character's class.
-        Ranger archer = new Ranger("Sasha",100,8,3);
+        Ranger archer = new Ranger("Sasha",100,8,2);
 
         System.out.println(wizard.getName() + "'s health: " + wizard.getHealth());
         System.out.println(warrior.getName()+"'s health: " + warrior.getHealth());
         System.out.println("Game is starting...");
-        wizard.setHealth(warrior);
+        wizard.setHealthW(warrior);
         System.out.println( warrior.getName()+" attacks " + wizard.getName() + ". Health updated: " + wizard.getHealth());
 
         // Task 6: make the wizard attack your new character.
-        archer.setHealth(wizard);
+        archer.setHealthWi(wizard);
         System.out.println(wizard.getName()+" attacks " + archer.getName() + ". Health updated: " + archer.getHealth());
         // Task 7: display the new stats
         System.out.println(archer.getName() + "'s health: " + archer.getHealth());
@@ -41,8 +41,11 @@ class Wizard {
         return name;
     }
 
-    public void setHealth(Warrior attack) {
+    public void setHealthW(Warrior attack) {
         health = health - (attack.getSword() - wizardArmor);
+    }
+    public void setHealthR(Ranger attack){
+        health = health - (attack.getBow() - wizardArmor);
     }
 
     public int getHealth() {
@@ -79,6 +82,14 @@ class Warrior {
         return health;
     }
 
+    public void setHealthW(Wizard attack) {
+        health = health - (attack.getDarkMagic() - metalArmor);
+    }
+
+    public void setHealthR(Ranger attack) {
+        health = health - (attack.getBow() - metalArmor);
+    }
+
 }
 class Ranger {
     private String name;
@@ -102,15 +113,11 @@ class Ranger {
         return bow;
     }
 
-    public void setHealth(Wizard wizard) {
-        health = health - (wizard.getDarkMagic() - stealthArmor);
+    public void setHealthWi(Wizard attack) {
+        health = health - (attack.getDarkMagic() - stealthArmor);
+    }
+
+    public void setHealthWa(Warrior attack) {
+        health = health - (attack.getSword() - stealthArmor);
     }
 }
-
-// Task 1: Write another class here for a different type of character (e.g. archer)
-
-// Task 2: Write instance variables
-
-// Task 3: Write the constructor
-
-// Task 4: Write the necessary getter(accessor) and setter(modifier) methods.
