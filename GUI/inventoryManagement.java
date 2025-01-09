@@ -10,7 +10,11 @@ public class Main {
         //Create frame
         JFrame frame = new JFrame("Inventory Management");
         frame.setLayout(new GridLayout(2,1));
-        frame.setSize(600,400);
+        frame.setSize(650,400);
+
+        //font
+        Font big = new Font("Calibri",Font.BOLD,20);
+        Font notsobig = new Font("Calibri",Font.BOLD,15);
 
         //Make 2 panels and split the top one into two (input on the left, output on the right)
         JPanel panel1 = new JPanel(new FlowLayout());
@@ -24,12 +28,18 @@ public class Main {
         panel1.add(panel4);
 
         JLabel label = new JLabel("Name:");
+        label.setFont(notsobig);
         JLabel label2 = new JLabel("Price:");
+        label2.setFont(notsobig);
         JLabel label3 = new JLabel("Quantity:");
+        label3.setFont(notsobig);
         //Create textfields for input
         JTextField eName = new JTextField(20);
+        eName.setFont(notsobig);
         JTextField ePrice = new JTextField(20);
+        ePrice.setFont(notsobig);
         JTextField eQuantity = new JTextField(20);
+        eQuantity.setFont(notsobig);
         panel3.add(label);
         panel3.add(eName);
         panel3.add(label2);
@@ -45,8 +55,11 @@ public class Main {
 
         //Create buttons
         JButton addProduct = new JButton("Add Product");
+        addProduct.setFont(big);
         JButton updateProduct = new JButton("Update Product");
+        updateProduct.setFont(big);
         JButton display = new JButton("Display Products");
+        display.setFont(big);
         panel2.add(addProduct);
         panel2.add(updateProduct);
         panel2.add(display);
@@ -66,7 +79,7 @@ public class Main {
                 }
                 //If the parses fail, stop the program from crashing and just output an error
                 try{
-                    output.setText( inventory.addProduct(new Product(eName.getText(),Double.parseDouble(ePrice.getText()),Integer.parseInt(eQuantity.getText()))));
+                    output.setText(inventory.addProduct(new Product(eName.getText(),Double.parseDouble(ePrice.getText()),Integer.parseInt(eQuantity.getText()))));
                 }catch(NumberFormatException nfe){
                     output.setText("Invalid price or quantity");
                 }
@@ -86,8 +99,7 @@ public class Main {
                     output.setText("Invalid product");
                 }
                 try{
-                    inventory.updateProduct(eName.getText(),Double.parseDouble(ePrice.getText()),Integer.parseInt(eQuantity.getText()));
-                    output.setText("Product Updated");
+                    output.setText(inventory.updateProduct(eName.getText(),Double.parseDouble(ePrice.getText()),Integer.parseInt(eQuantity.getText())));
                 }catch(NumberFormatException nfe){
                     output.setText("Please choose an existing product\nor enter valid price and quantity");
                 }
@@ -173,7 +185,7 @@ class Inventory{
         }
     }
 
-    public void updateProduct(String name, double price, int quantity){
+    public String updateProduct(String name, double price, int quantity){
         //search for an existing product with the same name, can only change price and quantity intentionally
         if(price > 0 && quantity>=0) {
             for (int i = 0; i < products.length; i++) {
@@ -182,6 +194,9 @@ class Inventory{
                     products[i].setQuantity(quantity);
                 }
             }
+            return "Product Updated";
+        }else{
+            return "Please enter positive values";
         }
     }
 
