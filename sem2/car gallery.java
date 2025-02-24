@@ -3,7 +3,7 @@ public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         Car[] cars = {
-            new Car("Toyota", "Camry",2020,250000,false),
+            new Car("Toyota", "Camry",2020,25000,false),
             new Car("Honda","Civic",2016,15000,true),
             new Car("Ford","Fusion",2019,20000,false),
             new Car("Subaru","Impreza",2014,19000,false)
