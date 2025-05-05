@@ -3,8 +3,10 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter file name: ");
         String name = sc.nextLine();
         for(int i = 0; i >= 0; i++){
+            System.out.println("Add prodcut (type done to exit): ");
             String in = sc.nextLine();
             if(in.equals("done")){
                 break;
